@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="Portfolio, developper, typescript, vuejs">
+	<meta name="description" content="Portfolio de Yannick VERON, développeur web full stack">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'selector',
+			theme: {
+				extend: {
+					animation: {
+						fade: 'fadeOut 2s linear',
+					},
+					keyframes: theme => ({
+						fadeOut: {
+						'0%': { opacity: 0 },
+						'100%': { opacicy: 1 },
+						},
+					}),
+				},
+			},
+		}
+        const useDark = localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.classList.toggle('dark', useDark)
+      </script>
+    <title>Yannick VERON</title>
+</head>
+<body class="bg-gray-100 dark:text-white dark:bg-slate-900 transition-colors duration-1000 before:left-[var(--mouse-x)] before:top-[var(--mouse-y)] before:w-96 before:h-96 before:bg-indigo-500 before:absolute before:opacity-10 before:rounded-full before:blur-[100px] before:pointer-events-none">
+	<div class="p-5 md:px-[10%]">
+		<div class="h-screen">
+			<header id="head" class="py-4 mb-[10vh] pt-10">
+				<h1 class="text-black dark:text-white text-6xl font-bold text-center animate-fade font-[DoctorGlitch]">Yannick VERON</h1>
+				<h2 class="text-black dark:text-slate-500 text-2xl text-center tr">Développeur Web</h2>
+				<div class="absolute right-5 top-12">
+				<div class="relative items-center rounded group bg-slate-100 border border-slate-200 mb-1">
+					<input class="order-2 hidden peer" type="checkbox" value="" id="dark-toogle" onclick="toggleDarkMode()"/>			
+					<label class="inline-flex items-center justify-center order-1 h-6 gap-2 px-6 text-sm font-medium tracking-wide text-white transition-colors rounded cursor-pointer bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 peer-checked:bg-transparent peer-checked:text-slate-500 hover:peer-checked:bg-transparent peer-checked:hover:text-slate-600 focus:peer-checked:bg-transparent" for="dark-toogle">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"/>
+							<path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.73 1.73 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.73 1.73 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.73 1.73 0 0 0 1.097-1.097zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/>
+						</svg>
+					</label>
+					<label class="inline-flex items-center justify-center order-1 h-6 gap-2 px-6 text-sm font-medium tracking-wide transition-colors bg-transparent rounded cursor-pointer text-slate-500 hover:text-slate-600 peer-checked:bg-blue-500 peer-checked:text-white hover:peer-checked:bg-blue-600 peer-checked:hover:text-white focus:peer-checked:bg-blue-700" for="dark-toogle">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+						</svg>
+					</label>
+				</div>
+				<div class="relative inline-flex items-center rounded group bg-slate-100 border border-slate-200">
+					<input class="order-2 hidden peer" type="checkbox" value="" id="lng-toogle" onclick="toggleLng()"/>
+					<label class="inline-flex items-center justify-center order-1 h-6 gap-2 px-6 text-sm font-medium tracking-wide text-white transition-colors rounded cursor-pointer bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 peer-checked:bg-transparent peer-checked:text-slate-500 hover:peer-checked:bg-transparent peer-checked:hover:text-slate-600 focus:peer-checked:bg-transparent" for="lng-toogle">
+					FR
+					</label>
+					<label class="inline-flex items-center justify-center order-1 h-6 gap-2 px-6 text-sm font-medium tracking-wide transition-colors bg-transparent rounded cursor-pointer text-slate-500 hover:text-slate-600 peer-checked:bg-blue-500 peer-checked:text-white hover:peer-checked:bg-blue-600 peer-checked:hover:text-white focus:peer-checked:bg-blue-700" for="lng-toogle">
+					EN
+					</label>
+				</div>
+				</div>
+			</header>
+			<section id="intro" class="container mx-auto mb-[10vh]">
+				<div class="flex flex-row mt-4 gap-5">
+					<img class="basis-1/4 w-[25%] object-contain hidden lg:block" src="image.png"></img>
+					<div class="text-xl basis-3/4">
+						<p class="tr mb-6">
+							Bienvenue sur mon portfolio web ! En tant que développeur web full stack passionné avec un accent sur le développement backend, je me spécialise dans la création de solutions robustes, efficaces et évolutives pour alimenter le monde numérique.
+						</p>
+						<p class="tr">
+							Avec un sens aigu du détail et un dévouement à l'excellence, j'aime relever des défis complexes et les transformer en un code élégant et fonctionnel. Explorez mon portfolio pour découvrir comment j'utilise mon expertise pour créer des systèmes backend transparents et innovants qui conduisent à des expériences utilisateur exceptionnelles.
+						</p>
+					</div>
+				</div>
+			</section>
+		
+			<div class="w-[30%] border-b m-auto border-slate-800">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="animate-bounce w-6 h-6 mb-5 mx-auto" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+				</svg>
+			</div>
+		</div>
+
+		<section id="edu" class="container mx-auto mb-[10vh]">
+			<h3 class="text-2xl font-bold mb-8">Education</h3>
+			<div class="container w-full h-full">
+				<div class="relative wrap overflow-hidden p-10 h-full">
+				<div class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border md:left-[50%] left-[20%] hidden md:block"></div>
+
+				<div class="mb-8 flex md:justify-between justify-around items-center w-full flex-col md:flex-row">
+					<div class="hidden md:block order-1 w-5/12"></div>
+					<div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl p-1 rounded-full mb-3 md:mb-0">
+						<h1 class="mx-auto font-semibold text-lg px-5 text-white">2020</h1>
+					</div>
+					<div class="order-1 bg-gray-400 rounded-lg shadow-xl md:w-5/12 px-6 py-4">
+					<h3 class="mb-3 font-bold text-gray-800 text-xl">Licence Professionnelle - Développeur informatique multi-supports</h3>
+					<p class="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">Université Savoie Mont-Blanc - IUT d'Annecy</p>
+					</div>
+				</div>
+			
+				<div class="mb-8 flex md:justify-between justify-around md:flex-row-reverse items-center w-full flex-col md:flex-row">
+					<div class="hidden md:block order-1 w-5/12"></div>
+					<div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl p-1 rounded-full mb-3 md:mb-0">
+						<h1 class="mx-auto text-white font-semibold text-lg px-5">2018</h1>
+					</div>
+					<div class="order-1 bg-blue-600 rounded-lg shadow-xl md:w-5/12 px-6 py-4">
+					<h3 class="mb-3 font-bold text-white text-xl">DUT Informatique</h3>
+					<p class="text-sm font-medium leading-snug tracking-wide text-white text-opacity-100">Université Savoie Mont-Blanc - IUT d'Annecy</p>
+					</div>
+				</div>
+				
+				<div class="mb-8 flex md:justify-between justify-around items-center w-full flex-col md:flex-row">
+					<div class="hidden md:block order-1 w-5/12"></div>
+					<div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl p-1 rounded-full mb-3 md:mb-0">
+						<h1 class="mx-auto font-semibold text-lg px-5 text-white">2016</h1>
+					</div>
+					<div class="order-1 bg-gray-400 rounded-lg shadow-xl md:w-5/12 px-6 py-4">
+					<h3 class="mb-3 font-bold text-gray-800 text-xl">BAC Science et Technique de l'industrie et du Développement Durable</h3>
+					<p class="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">
+						<small>Option Système d'Information et Numérique (Mention Très Bien)</small><br>
+						Lycée Charles PONCET - Cluses
+					</p>
+					</div>
+				</div>
+				</div>
+			</div>
+		</section>
+		<section id="exp" class="container mx-auto mt-8 mb-[10vh]">
+			<h3 class="text-2xl font-bold mb-8">Experience</h3>
+			<ul class="relative flex flex-col gap-12 py-12 pl-6 text-sm lg:pl-0 before:absolute before:top-0 before:left-6 lg:before:left-[8.5rem] before:h-full before:border before:-translate-x-1/2 before:border-slate-200 before:border-dashed after:absolute after:top-6 after:left-6 lg:after:left-[8.5rem] after:bottom-6 after:border after:-translate-x-1/2 after:border-slate-200">
+				<li role="article" class="relative pl-6 lg:pl-0 lg:flex lg:gap-12 before:absolute before:z-10 before:left-0 lg:before:left-[8.5rem] before:top-2 before:h-2 before:w-2 before:-translate-x-1/2 before:rounded-full before:bg-white before:ring-2 before:ring-white">
+				<h4 class="hidden text-base font-medium leading-7 text-slate-500 lg:w-28 lg:text-right lg:block">Décembre 2021 - Aujourd'hui</h4>
+				<div class="flex flex-col flex-1 gap-2">
+					<h3 class="text-base font-medium leading-7 dark:text-white text-black">
+						<span class="bg-slate-200 dark:bg-slate-800 rounded p-1 hover:dark:bg-slate-700 hover:bg-slate-100"><a href="https://www.darylsoftware.com/" target="_blank">Daryl Social Software</a></span>
+						<span class="font-normal lg:hidden text-slate-500"> - Décembre 2021 - Aujourd'hui</span>
+					</h3>
+					<p class="text-slate-500">Développement de réseaux sociaux (Graphql/Typescript/Mysql/Redis)</p>
+				</div>
+				</li>
+				<li role="article" class="relative pl-6 lg:pl-0 lg:flex lg:gap-12 before:absolute before:z-10 before:left-0 lg:before:left-[8.5rem] before:top-2 before:h-2 before:w-2 before:-translate-x-1/2 before:rounded-full before:bg-white before:ring-2 before:ring-white">
+				<h4 class="hidden text-base font-medium leading-7 text-slate-500 lg:w-28 lg:text-right lg:block">Juin 2020 - Juin 2021</h4>
+				<div class="flex flex-col flex-1 gap-2">
+					<h3 class="text-base font-medium dark:text-white text-black">
+						<span class="bg-slate-200 dark:bg-slate-800 rounded p-1 hover:dark:bg-slate-700 hover:bg-slate-100"><a href="https://ropeup.fr/" target="_blank">Ropeup! Annecy</a></span>
+						<span class="font-normal lg:hidden text-slate-500"> - Juin 2020 - Juin 2021</span>
+					</h3>
+					<p class="text-slate-500">Développement d’une web app comptable (Laravel/MySQL/VueJS)</p>
+				</div>
+				</li>
+				<li role="article" class="relative pl-6 lg:pl-0 lg:flex lg:gap-12 before:absolute before:z-10 before:left-0 lg:before:left-[8.5rem] before:top-2 before:h-2 before:w-2 before:-translate-x-1/2 before:rounded-full before:bg-white before:ring-2 before:ring-white">
+					<h4 class="hidden text-base font-medium leading-7 text-slate-500 lg:w-28 lg:text-right lg:block">Juillet 2019 - Juin 2020</h4>
+					<div class="flex flex-col flex-1 gap-2">
+					<h3 class="text-base font-medium dark:text-white text-black">
+						<span class="bg-slate-200 dark:bg-slate-800 rounded p-1 hover:dark:bg-slate-700 hover:bg-slate-100"><a href="https://ropeup.fr/" target="_blank">Ropeup! Annecy</a></span>
+						<span class="font-normal lg:hidden text-slate-500"> - Juillet 2019 - Juin 2020</span>
+					</h3>
+					<p class="text-slate-500">Développement d’une web app comptable en Alternance (Laravel/MySQL/VueJS)</p>
+					</div>
+				</li>
+				<li role="article" class="relative pl-6 lg:pl-0 lg:flex lg:gap-12 before:absolute before:z-10 before:left-0 lg:before:left-[8.5rem] before:top-2 before:h-2 before:w-2 before:-translate-x-1/2 before:rounded-full before:bg-white before:ring-2 before:ring-white">
+					<h4 class="hidden text-base font-medium leading-7 text-slate-500 lg:w-28 lg:text-right lg:block">Avril-Juillet 2018</h4>
+					<div class="flex flex-col flex-1 gap-2">
+					<h3 class="text-base font-medium dark:text-white text-black">
+						<span class="bg-slate-200 dark:bg-slate-800 rounded p-1 hover:dark:bg-slate-700 hover:bg-slate-100"><a href="https://www.amphenol-socapex.com/" target="_blank">AMPHENOL SOCAPEX Thyez</a></span>
+						<span class="font-normal lg:hidden text-slate-500"> - Avril-Juillet 2018</span>
+					</h3>
+					<p class="text-slate-500">Développement d’un intranet(ASP .NET Core/Bootstrap/Entity Framework/Identity Framework)</p>
+					</div>
+				</li>
+				<li role="article" class="relative pl-6 lg:pl-0 lg:flex lg:gap-12 before:absolute before:z-10 before:left-0 lg:before:left-[8.5rem] before:top-2 before:h-2 before:w-2 before:-translate-x-1/2 before:rounded-full before:bg-white before:ring-2 before:ring-white">
+					<h4 class="hidden text-base font-medium leading-7 text-slate-500 lg:w-28 lg:text-right lg:block">2017-2018</h4>
+					<div class="flex flex-col flex-1 gap-2">
+					<h3 class="text-base font-medium dark:text-white text-black">
+						<span class="bg-slate-200 dark:bg-slate-800 rounded p-1 hover:dark:bg-slate-700 hover:bg-slate-100"><a href="https://www.univ-smb.fr/iut-annecy/" target="_blank">IUT Annecy</a></span>
+						<span class="font-normal lg:hidden text-slate-500"> - 2017-2018</span>
+					</h3>
+					<p class="text-slate-500">Développment Web (5 personnes) Création d’un site web de gestion des formations en alternance (Wordpress/Bootstrap/PHP/JS)</p>
+					</div>
+				</li>
+			</ul>
+		</section>
+
+		<section id="skills" class="container mx-auto mt-8 mb-[10vh]">
+			<h3 class="text-2xl font-bold mb-8">Skills</h3>        
+			<span class="inline-flex items-center justify-center gap-1 ml-2 rounded-full bg-[#3178c6] px-1.5 mb-2 text-md text-white">Typescript</span>
+			<span class="inline-flex items-center justify-center gap-1 ml-2 rounded-full bg-[#417e38] px-1.5 mb-2 text-md text-white">NodeJS</span>
+			<span class="inline-flex items-center justify-center gap-1 ml-2 rounded-full bg-[#f6009b] px-1.5 mb-2 text-md text-white">Graphql</span>
+			<span class="inline-flex items-center justify-center gap-1 ml-2 rounded-full bg-[#f6362d] px-1.5 mb-2 text-md text-white">Laravel</span>
+			<span class="inline-flex items-center justify-center gap-1 ml-2 rounded-full bg-[#7a86b8] px-1.5 mb-2 text-md text-white">PHP</span>
+			<span class="inline-flex items-center justify-center gap-1 ml-2 rounded-full bg-[#42d392] px-1.5 mb-2 text-md text-white">VueJS</span>
+			<span class="inline-flex items-center justify-center gap-1 ml-2 rounded-full bg-[#dd392b] px-1.5 mb-2 text-md text-white">Redis</span>
+			<span class="inline-flex items-center justify-center gap-1 ml-2 rounded-full bg-[#fff378] px-1.5 mb-2 text-md text-black">Python</span>
+			<span class="inline-flex items-center justify-center gap-1 ml-2 rounded-l-full bg-[#00758f] pl-1.5 text-md text-white">My</span><span class="inline-flex items-center justify-center gap-1 rounded-r-full bg-[#f29111] pr-1.5 text-md text-black">SQL</span>
+		</section>
+
+		<section id="projects" class="container mx-auto mt-8 mb-[10vh]">
+			<h3 class="text-2xl font-bold mb-8">Projects</h3>
+			<div class="grid gap-8 md:grid-cols-3 grid-cols-1">
+				<figure class="lg:flex bg-slate-100 rounded-xl p-8 dark:bg-slate-800 drop-shadow-lg transform transition duration-500 hover:scale-110">
+					<img class="w-24 h-24 rounded-full mx-auto" src="https://fastly.picsum.photos/id/474/300/200.jpg?hmac=U3owchyfD1gP7JngoXB576Lo9qRMD8R19P1zopKGvKI" alt="" width="300" height="200">
+					<div class="pt-6 text-center space-y-4">
+						<blockquote>
+						<p class="text-lg font-medium">
+							Portfolio Website - Built using HTML, JavaScript and Tailwind
+						</p>
+						</blockquote>
+						<figcaption class="font-medium">
+						<div class="text-sky-500 dark:text-sky-400">
+							<a href="https://github.com/VERONYannick">Github</a>
+						</div>
+						</figcaption>
+					</div>
+				</figure>
+				<figure class="lg:flex bg-slate-100 rounded-xl p-8 dark:bg-slate-800 drop-shadow-lg transform transition duration-500 hover:scale-110">
+					<img class="w-24 h-24 rounded-full mx-auto" src="https://fastly.picsum.photos/id/474/300/200.jpg?hmac=U3owchyfD1gP7JngoXB576Lo9qRMD8R19P1zopKGvKI" alt="" width="300" height="200">
+					<div class="pt-6 text-center space-y-4">
+						<blockquote>
+						<p class="text-lg font-medium">
+							Sticker Vision - Overlay detection on images using Neural Networks
+						</p>
+						</blockquote>
+						<figcaption class="font-medium">
+						<div class="text-sky-500 dark:text-sky-400">
+							<a href="https://github.com/VERONYannick">Github</a>
+						</div>
+						</figcaption>
+					</div>
+				</figure>
+			</div>
+		</section>
+
+		<section id="contact" class="container mx-auto mt-8 mb-[10vh]">
+			<h3 class="text-2xl font-bold mb-8">Contact</h3>
+			<p class="group"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="inline mr-1 group-hover:fill-[#e94335]" viewBox="0 0 16 16">
+				<path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/>
+			  </svg>Email: <span class="ml-5 bg-slate-200 dark:bg-slate-800 rounded p-1 hover:dark:bg-slate-700 hover:bg-slate-100"><a href="mailto:yannick.veron.pro@gmail.com">yannick.veron.pro@gmail.com</a></span></p>
+			<p class="mt-6 group"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="inline mr-1 group-hover:fill-[#0a66c2]" viewBox="0 0 16 16">
+				<path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+			  </svg>Linkedin: <span class="peer ml-5 bg-slate-200 dark:bg-slate-800 rounded p-1 hover:dark:bg-slate-700 hover:bg-slate-100"><a href="https://www.linkedin.com/in/yannick-veron/" target="_blank">yannick-veron</a></span></p>
+			<p class="mt-6 group"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="inline mr-1 group-hover:fill-[#010409]" viewBox="0 0 16 16">
+				<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+			  </svg>Github: <span class="ml-5 bg-slate-200 dark:bg-slate-800 rounded p-1 hover:dark:bg-slate-700 hover:bg-slate-100"><a href="https://github.com/VERONYannick" target="_blank">VERONYannick</a></span></p>
+		</section>
+	</div>
+    <footer class="container mx-auto mt-8 dark:text-white dark:bg-slate-900">
+        <p class="text-center text-slate-500">© 2021 Yannick VERON</p>
+    </footer>
+</body>
+<script>
+	let translations = {
+		"Développeur Web":"Web Developer",
+		"Mode sombre" : "Toogle Dark Mode",
+		"A propos de moi":"About me",
+		"Bienvenue sur mon portfolio web ! En tant que développeur web full stack passionné avec un accent sur le développement backend, je me spécialise dans la création de solutions robustes, efficaces et évolutives pour alimenter le monde numérique.":"Welcome to my web portfolio! As a passionate full stack web developer with a focus on backend development, I specialize in crafting robust, efficient, and scalable solutions to power the digital world.",
+		"Avec un sens aigu du détail et un dévouement à l'excellence, j'aime relever des défis complexes et les transformer en un code élégant et fonctionnel. Explorez mon portfolio pour découvrir comment j'utilise mon expertise pour créer des systèmes backend transparents et innovants qui conduisent à des expériences utilisateur exceptionnelles." : "With a keen eye for detail and a dedication to excellence, I thrive on tackling complex challenges and turning them into elegant, functional code. Explore my portfolio to discover how I leverage my expertise to create seamless, innovative backend systems that drive exceptional user experiences.",
+	}
+	Object.entries(translations).forEach(([key,value]) => {
+		translations[value] = key
+	})
+	const trItems = document.querySelectorAll('.tr')
+	for(tr of trItems) {
+		if(!translations[tr.innerHTML.trim()]) {
+			console.error(`Translation not found for ${tr.innerHTML}`)
+		}
+	}
+	console.log(localStorage)
+	let lng = 'fr'
+	if(localStorage.lng != 'fr') {
+		toggleLng()
+	}
+
+    //on doc ready
+    document.addEventListener('DOMContentLoaded', function() {
+        const darkToogle = document.getElementById('toggle-dark')
+        if(localStorage.theme === 'dark') {
+            //darkToogle.checked = true TODO fix
+        }
+		const minTimeStep = 50
+		let lastEventAt = 0
+		window.addEventListener('mousemove', function(e) {
+			if(Date.now() - lastEventAt < minTimeStep) {
+				return
+			}
+			const spotSize = 400
+			lastEventAt = Date.now()
+			const x = e.pageX - spotSize/2
+			const y = e.pageY - spotSize/2
+			document.documentElement.style.setProperty('--mouse-x', x+'px')
+			document.documentElement.style.setProperty('--mouse-y', y+'px')
+		})
+    })
+    function toggleDarkMode() {
+        if(localStorage.theme === 'dark') {
+            localStorage.theme = 'light'
+            document.documentElement.classList.remove('dark')
+        } else {
+            localStorage.theme = 'dark'
+            document.documentElement.classList.add('dark')
+        }
+        //TODO - add revert to system default
+    }
+	function toggleLng() {
+		lng = lng === 'fr' ? 'en' : 'fr'
+		localStorage.lng = lng
+		trItems.forEach(item => {
+			item.innerHTML = translations[item.innerHTML.trim()]
+		})
+	}
+</script>
+<style>
+	@font-face {
+		font-family: 'DoctorGlitch';
+		src: url('/DoctorGlitch.otf') format('opentype');
+	}
+</style>
+</html>
